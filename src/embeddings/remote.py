@@ -40,3 +40,6 @@ class RemoteEmbeddings(Embeddings):
             vectors = [data.embedding for data in resp_struct.data]
 
         return vectors
+
+    def name(self):
+        return self.model

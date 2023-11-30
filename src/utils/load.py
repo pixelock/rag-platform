@@ -2,6 +2,7 @@
 
 import os
 import glob
+from datasets import load_dataset
 from itertools import chain
 from langchain.document_loaders import TextLoader
 
@@ -9,8 +10,7 @@ from utils.path import DOCS_DIR
 from utils.log import logger
 
 
-def load_documents(file_dir='docs', verbose=False):
-    docs_dir = os.path.join(DOCS_DIR, file_dir)
+def load_documents(docs_dir, verbose=False):
     doc_files = [
         os.path.join(docs_dir, file)
         for file in chain(
@@ -34,3 +34,11 @@ def load_documents(file_dir='docs', verbose=False):
         logger.info(f'total documents number: {len(docs)}')
 
     return docs
+
+
+class QAManager(object):
+    def __init__(self, path):
+        self.datasets = load_dataset('csv', data_files=path)
+
+    def __len__(self):
+        return len(self.datasets)

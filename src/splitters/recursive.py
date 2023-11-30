@@ -25,3 +25,4 @@ class RecursiveChineseTextSplitter(RecursiveCharacterTextSplitter, TextSplitterM
             separators=['\n\n', '\n', '。', '！', '？', '；', '，'],
             **kwargs,
         )
+        self.name = f'recursive-chinese(chunk_size={chunk_size},chunk_overlap={chunk_overlap})'

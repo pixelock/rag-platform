@@ -1,5 +1,7 @@
 # coding: utf-8
 
+from utils.text import text_hash
+
 
 class TextSplitterMixin(object):
     @property
@@ -17,3 +19,15 @@ class TextSplitterMixin(object):
     @property
     def separator(self):
         return self._separators if hasattr(self, '_separators') else None
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, n):
+        self._name = n
+
+    @property
+    def id(self):
+        return text_hash(self._name)
