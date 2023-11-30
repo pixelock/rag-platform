@@ -67,7 +67,23 @@ if __name__ == '__main__':
 
     vector_store_manager = VectorStoreManager(embeddings=cached_embeddings)
 
-
-    vector_store_retriever_factory(documents=documents, vectorstore_manager=vector_store_manager)
+    vector_100_retriever = vector_store_retriever_factory(
+        documents=documents,
+        embeddings=cached_embeddings,
+        text_splitter=splitter_rec_100,
+        vectorstore_manager=vector_store_manager,
+    )
+    vector_200_retriever = vector_store_retriever_factory(
+        documents=documents,
+        embeddings=cached_embeddings,
+        text_splitter=splitter_rec_200,
+        vectorstore_manager=vector_store_manager,
+    )
+    vector_400_retriever = vector_store_retriever_factory(
+        documents=documents,
+        embeddings=cached_embeddings,
+        text_splitter=splitter_rec_400,
+        vectorstore_manager=vector_store_manager,
+    )
 
 
