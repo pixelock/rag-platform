@@ -85,5 +85,3 @@ if __name__ == '__main__':
         text_splitter=splitter_rec_400,
         vectorstore_manager=vector_store_manager,
     )
-
-

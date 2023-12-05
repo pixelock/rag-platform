@@ -1,28 +1,16 @@
 # coding: utf-8
 
-from pydantic import BaseModel
-from typing import List, Optional, Union
+from enum import Enum
 
 
-class EmbeddingRequest(BaseModel):
-    input: Union[str, List[int], List[str], List[List[int]]]
-    model: Optional[str]
-    object: str = 'embedding'
+class EmbeddingModel(str, Enum):
+    BGE = 'bge'
+    ADA = 'ada'
+    M3E = 'm3e'
 
 
-class EmbeddingData(BaseModel):
-    index: int
-    embedding: Union[List[float], List[List[float]]]
-    object: str = 'embedding'
-
-
-class EmbeddingUsage(BaseModel):
-    prompt_tokens: int
-    total_tokens: int
-
-
-class EmbeddingResponse(BaseModel):
-    data: List[EmbeddingData]
-    model: Optional[str] = None
-    object: Optional[str] = None
-    usage: Optional[EmbeddingUsage] = None
+EmbeddingDim = {
+    EmbeddingModel.BGE: 1024,
+    EmbeddingModel.ADA: 1536,
+    EmbeddingModel.M3E: 768,
+}
